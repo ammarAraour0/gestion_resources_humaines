@@ -28,6 +28,13 @@ public function diplomas()
 {
     return $this->hasMany(Diploma::class);
 }
+public function assignments()
+{
+    return $this->hasMany(Assignment::class);
+}
+
+
+
 
 
 }

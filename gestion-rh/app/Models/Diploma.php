@@ -11,4 +11,6 @@ class Diploma extends Model
     return $this->belongsTo(Employee::class);
 }
 
+
+
 }

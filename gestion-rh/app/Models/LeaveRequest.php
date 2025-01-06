@@ -10,5 +10,6 @@ class LeaveRequest extends Model
     {
         return $this->belongsTo(Employee::class);
     }
-    
+   
+
 }

@@ -8,6 +8,9 @@ use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DiplomaController;
 use App\Http\Controllers\LeaveRequestController;
+use App\Http\Controllers\AssignmentController;
+
+Route::resource('assignments', AssignmentController::class);
 
 
 
