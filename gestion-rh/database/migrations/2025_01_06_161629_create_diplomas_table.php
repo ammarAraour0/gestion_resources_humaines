@@ -10,16 +10,18 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up()
-    {
-        Schema::create('diplomas', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
-            $table->string('title'); // Nom du diplôme
-            $table->string('institution'); // Établissement
-            $table->year('graduation_year'); // Année d'obtention
-            $table->timestamps();
-        });
-    }
+{
+    Schema::create('diplomas', function (Blueprint $table) {
+        $table->id();
+        $table->foreignId('employee_id')->constrained('employees')->onDelete('cascade');
+        $table->string('title'); // Nom du diplôme
+        $table->string('institution'); // Établissement
+        $table->year('graduation_year'); // Année d'obtention
+        $table->timestamps();
+    });
+}
+
+
      
 
     /**

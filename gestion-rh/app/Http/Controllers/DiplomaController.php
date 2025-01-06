@@ -2,63 +2,63 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Diploma;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 
 class DiplomaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $diplomas = Diploma::with('employee')->get();
+        return view('diplomas.index', compact('diplomas'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        $employees = Employee::all();
+        return view('diplomas.create', compact('employees'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'employee_id' => 'required|exists:employees,id',
+            'title' => 'required|string|max:255',
+            'institution' => 'required|string|max:255',
+            'graduation_year' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
+        ]);
+
+        Diploma::create($validated);
+
+        return redirect()->route('diplomas.index')->with('success', 'Diploma added successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Diploma $diploma)
     {
-        //
+        $employees = Employee::all();
+        return view('diplomas.edit', compact('diploma', 'employees'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Diploma $diploma)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'institution' => 'required|string|max:255',
+            'graduation_year' => 'required|digits:4|integer|min:1900|max:' . date('Y'),
+        ]);
+
+        $diploma->update($validated);
+
+        return redirect()->route('diplomas.index')->with('success', 'Diploma updated successfully.');
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function destroy(Diploma $diploma)
     {
-        //
-    }
+        $diploma->delete();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return redirect()->route('diplomas.index')->with('success', 'Diploma deleted successfully.');
     }
 }
+
+
