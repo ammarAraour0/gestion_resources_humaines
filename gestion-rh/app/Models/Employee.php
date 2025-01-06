@@ -14,5 +14,19 @@ public function attendances()
 {
     return $this->hasMany(Attendance::class);
 }
+public function diplomas()
+{
+    return $this->hasMany(Diploma::class);
+}
+
+public function employee()
+{
+    return $this->belongsTo(Employee::class);
+}
+public function leaveRequests()
+{
+    return $this->hasMany(LeaveRequest::class);
+}
+
 
 }

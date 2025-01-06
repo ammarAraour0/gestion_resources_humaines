@@ -60,5 +60,4 @@ public function destroy(Attendance $attendance)
     return redirect()->route('attendances.index')->with('success', 'Attendance record deleted successfully.');
 }
 
-
 }

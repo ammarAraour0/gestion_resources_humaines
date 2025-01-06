@@ -6,6 +6,12 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeaveController;
 use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\DiplomaController;
+use App\Http\Controllers\LeaveRequestController;
+
+Route::resource('leave-requests', LeaveRequestController::class);
+
+Route::resource('diplomas', DiplomaController::class);
 
 Route::resource('attendances', AttendanceController::class);
 
