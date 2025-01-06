@@ -3,6 +3,15 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\AttendanceController;
+
+Route::resource('attendances', AttendanceController::class);
+
+Route::resource('leaves', LeaveController::class);
+
+Route::resource('employees', EmployeeController::class);
 
 Route::get('/test', [TestController::class, 'index']);
 
